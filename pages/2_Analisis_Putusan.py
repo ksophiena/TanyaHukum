@@ -19,7 +19,7 @@ from utils.components import render_sidebar, render_topbar, law_disclaimer
 from utils import rag_engine as rag
 from utils.validator import validate_court_decision
 
-st.set_page_config(page_title="TanyaHukum - Analisis Putusan", layout="wide")
+st.set_page_config(page_title="TanyaHukum - Analisis Putusan", layout="wide", initial_sidebar_state="collapsed")
 st.markdown("<style>[data-testid='stSidebarNav'] {display: none;}</style>", unsafe_allow_html=True)
 
 db.init_db()
