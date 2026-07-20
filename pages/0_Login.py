@@ -64,7 +64,7 @@ with col_left:
             @import url('https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Inter:wght@400;500&family=IBM+Plex+Mono&display=swap');
             html, body {{ margin:0; padding:0; background:#1A1613; }}
         </style>
-        <div style="background:linear-gradient(160deg,#4A382D 0%,#181513 100%);height:540px;
+        <div style="background:linear-gradient(160deg,#4A382D 0%,#181513 100%);height:520px;
             border-radius:16px;padding:40px;display:flex;flex-direction:column;color:#F3E7D3;
             box-sizing:border-box;font-family:'Inter',sans-serif;border-left:4px solid #C4956A;">
 
@@ -91,7 +91,7 @@ with col_left:
             </div>
 
         </div>
-    """, height=540)
+    """, height=520)
 
 with col_right:
     tab_login, tab_signup = st.tabs(["Masuk", "Daftar"])
@@ -127,24 +127,16 @@ with col_right:
                                              help="Minimal 8 karakter")
 
         if st.button("Daftar", type="primary", use_container_width=True, key="btn_signup"):
-            success, error = auth.signup(
-                signup_name,
-                signup_username,
-                signup_email,
-                signup_password
-            )
-        
+            success, error = auth.signup(signup_name, signup_username, signup_email, signup_password)
             if success:
-                login_success, login_error = auth.login(
-                    signup_username,
-                    signup_password
-                )
-        
-                if login_success:
-                    st.success("Registrasi berhasil! Mengalihkan ke chatbot...")
-                    st.switch_page("app.py")
-                else:
-                    st.error(f"Registrasi berhasil, tetapi login otomatis gagal: {login_error}")
+                st.session_state.signup_name = ""
+                st.session_state.signup_username = ""
+                st.session_state.signup_email = ""
+                st.session_state.signup_password = ""
+            
+                st.toast("Akun berhasil dibuat!")
+            
+                st.rerun()
             else:
                 st.error(error)
 
