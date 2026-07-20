@@ -12,7 +12,7 @@ from utils.theme import apply_theme
 from utils.components import render_sidebar
 from datetime import datetime as _dt
 
-st.set_page_config(page_title="TanyaHukum - Profil", layout="wide")
+st.set_page_config(page_title="TanyaHukum - Profil", layout="wide", initial_sidebar_state="collapsed")
 st.markdown("<style>[data-testid='stSidebarNav'] {display: none;}</style>", unsafe_allow_html=True)
 
 db.init_db()
