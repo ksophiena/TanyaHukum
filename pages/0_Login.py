@@ -135,7 +135,6 @@ with col_right:
                 st.session_state.signup_password = ""
             
                 st.toast("Akun berhasil dibuat!")
-            
                 st.rerun()
             else:
                 st.error(error)
