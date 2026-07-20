@@ -11,7 +11,7 @@ from utils import auth, database as db
 from utils.theme import apply_theme
 from utils.components import render_sidebar, render_topbar, law_disclaimer
 
-st.set_page_config(page_title="TanyaHukum - Tentang", layout="wide")
+st.set_page_config(page_title="TanyaHukum - Tentang", layout="wide", initial_sidebar_state="collapsed")
 st.markdown("<style>[data-testid='stSidebarNav'] {display: none;}</style>", unsafe_allow_html=True)
 
 db.init_db()
