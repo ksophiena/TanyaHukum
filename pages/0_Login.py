@@ -64,7 +64,7 @@ with col_left:
             @import url('https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Inter:wght@400;500&family=IBM+Plex+Mono&display=swap');
             html, body {{ margin:0; padding:0; background:#1A1613; }}
         </style>
-        <div style="background:linear-gradient(160deg,#4A382D 0%,#181513 100%);height:520px;
+        <div style="background:linear-gradient(160deg,#4A382D 0%,#181513 100%);height:540px;
             border-radius:16px;padding:40px;display:flex;flex-direction:column;color:#F3E7D3;
             box-sizing:border-box;font-family:'Inter',sans-serif;border-left:4px solid #C4956A;">
 
@@ -91,7 +91,7 @@ with col_left:
             </div>
 
         </div>
-    """, height=520)
+    """, height=540)
 
 with col_right:
     tab_login, tab_signup = st.tabs(["Masuk", "Daftar"])
