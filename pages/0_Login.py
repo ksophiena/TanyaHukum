@@ -127,9 +127,24 @@ with col_right:
                                              help="Minimal 8 karakter")
 
         if st.button("Daftar", type="primary", use_container_width=True, key="btn_signup"):
-            success, error = auth.signup(signup_name, signup_username, signup_email, signup_password)
+            success, error = auth.signup(
+                signup_name,
+                signup_username,
+                signup_email,
+                signup_password
+            )
+        
             if success:
-                st.success("Akun berhasil dibuat! Silakan masuk lewat tab **Masuk**.")
+                login_success, login_error = auth.login(
+                    signup_username,
+                    signup_password
+                )
+        
+                if login_success:
+                    st.success("Registrasi berhasil! Mengalihkan ke chatbot...")
+                    st.switch_page("app.py")
+                else:
+                    st.error(f"Registrasi berhasil, tetapi login otomatis gagal: {login_error}")
             else:
                 st.error(error)
 
