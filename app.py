@@ -13,7 +13,7 @@ from utils.theme import apply_theme
 from utils.components import render_sidebar, render_topbar, law_disclaimer, render_chat_bubble
 from utils import rag_engine as rag
 
-st.set_page_config(page_title="TanyaHukum - Chatbot", page_icon="⚖️", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="TanyaHukum - Chatbot", page_icon="⚖️", layout="wide", initial_sidebar_state="collapsed")
 
 st.markdown("<style>[data-testid='stSidebarNav'] {display: none;}</style>", unsafe_allow_html=True)
 
