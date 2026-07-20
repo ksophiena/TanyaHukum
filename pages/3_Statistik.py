@@ -17,7 +17,7 @@ from utils.components import render_sidebar, render_topbar, law_disclaimer
 from utils.chart_helpers import render_bar_chart, render_pie_chart
 from utils import rag_engine as rag
 
-st.set_page_config(page_title="TanyaHukum - Statistik", layout="wide")
+st.set_page_config(page_title="TanyaHukum - Statistik", layout="wide", initial_sidebar_state="collapsed")
 st.markdown("<style>[data-testid='stSidebarNav'] {display: none;}</style>", unsafe_allow_html=True)
 
 db.init_db()
