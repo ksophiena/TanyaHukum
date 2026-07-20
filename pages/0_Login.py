@@ -129,13 +129,7 @@ with col_right:
         if st.button("Daftar", type="primary", use_container_width=True, key="btn_signup"):
             success, error = auth.signup(signup_name, signup_username, signup_email, signup_password)
             if success:
-                st.session_state.signup_name = ""
-                st.session_state.signup_username = ""
-                st.session_state.signup_email = ""
-                st.session_state.signup_password = ""
-            
-                st.toast("Akun berhasil dibuat!")
-                st.rerun()
+                st.success("Akun berhasil dibuat! Silakan masuk melalui tab Masuk.")
             else:
                 st.error(error)
 
