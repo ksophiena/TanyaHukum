@@ -34,7 +34,7 @@ def render_sidebar(active: str):
             (" Analisis Putusan", "pages/2_Analisis_Putusan.py"),
             (" Statistik", "pages/3_Statistik.py"),
             (" Riwayat", "pages/4_Riwayat.py"),
-            (" Tentang", "pages/6_Informasi.py"),
+            (" Informasi", "pages/6_Informasi.py"),
         ]
 
         for label, target in pages:
