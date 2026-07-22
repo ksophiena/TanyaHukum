@@ -11,6 +11,8 @@ from utils.theme import get_image_base64
 from utils import auth, database as db
 from utils.theme import apply_theme
 
+st.set_page_config(page_title="TanyaHukum - Masuk", page_icon="⚖️", layout="wide", initial_sidebar_state="collapsed")
+
 db.init_db()
 auth.init_session_state()
 apply_theme()
@@ -26,7 +28,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-st.set_page_config(page_title="TanyaHukum - Masuk", page_icon="⚖️", layout="wide", initial_sidebar_state="collapsed")
 st.markdown(
     """
     <style>

@@ -14,6 +14,7 @@ import re
 import json
 import time
 import numpy as np
+import random
 import torch
 import faiss
 import streamlit as st
@@ -510,7 +511,6 @@ def rag_answer(question: str, tokenizer, model, kb: list, index,
     # Routing retrieval berdasarkan tipe pertanyaan
     if q_type == 'statistical':
         # Sampling representatif dari KB untuk analisis pola
-        import random
         sample = random.sample(kb, min(25, len(kb)))
         base_retrieve = retrieve(question, tokenizer, model, kb, index,
                                   top_k=5, level_filter=level_filter,

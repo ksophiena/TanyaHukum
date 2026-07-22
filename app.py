@@ -21,6 +21,8 @@ db.init_db()
 auth.init_session_state()
 apply_theme()
 
+logged_in, current_user = auth.require_guard()
+
 st.markdown(
     """
     <style>
@@ -54,7 +56,6 @@ if "chat_messages" not in st.session_state:
 
 # ── Contoh pertanyaan (tampil hanya jika chat masih kosong) ────────────
 if not st.session_state.chat_messages:
-    logged_in, current_user = auth.require_guard()
     greeting_name = current_user["full_name"].split()[0] if logged_in else "Sobat TanyaHukum"
 
     st.markdown(
@@ -138,10 +139,9 @@ if question:
     })
 
     # Simpan ke riwayat permanen HANYA jika user sudah login
-    logged_in, user = auth.require_guard()
     if logged_in:
         db.save_chat(
-            user_id=user["id"], category="chatbot",
+            user_id=current_user["id"], category="chatbot",
             question=question, answer=result["answer"],
             sources_json=json.dumps(result["sources"], ensure_ascii=False),
         )

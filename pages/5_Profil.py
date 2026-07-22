@@ -64,14 +64,15 @@ def edit_profile_dialog():
             if error:
                 st.error(error)
             else:
-                db.update_user_profile(
+                success = db.update_user_profile(
                     user_id=user["id"], full_name=new_full_name, username=new_username,
-                    age=int(new_age) if new_age else None, email=new_email,
-                    password_hash=password_hash,
-                )
-                st.toast("Perubahan berhasil disimpan!")
-                st.session_state.user = db.get_user_by_username(new_username)
-                st.rerun()
+                    age=int(new_age) if new_age else None, email=new_email, password_hash=password_hash,)
+                if success:
+                    st.toast("Perubahan berhasil disimpan!")
+                    st.session_state.user = db.get_user_by_username(new_username)
+                    st.rerun()
+                else:
+                    st.error("Username atau email sudah digunakan oleh pengguna lain.")
 
     with col_cancel:
         if st.button("Batal", use_container_width=True):
@@ -93,12 +94,18 @@ st.divider()
 with st.container(border=True, key="profile_header_card"):
     st.markdown(f"### {user['full_name']}")
     try:
-        joined = _dt.fromisoformat(user["created_at"])
-        bulan_id = ["Januari", "Februari", "Maret", "April", "Mei", "Juni",
-                    "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
+        created_at = user["created_at"]
+        if isinstance(created_at, _dt):
+            joined = created_at
+        else:
+            joined = _dt.fromisoformat(created_at)
+        bulan_id = [
+            "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+            "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
         joined_str = f"{joined.day} {bulan_id[joined.month - 1]} {joined.year}"
     except Exception:
         joined_str = "-"
+        
     st.caption(f"Bergabung sejak {joined_str}")
 
 st.markdown("**INFORMASI AKUN**")

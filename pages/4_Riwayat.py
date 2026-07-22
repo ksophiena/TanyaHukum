@@ -1,13 +1,14 @@
 """
 pages/4_Riwayat.py
 ====================
-- User yang login  : riwayat permanen dari database SQLite
+- User yang login : riwayat permanen dari database PostgreSQL (Supabase)
 - Guest (belum login): hanya riwayat sesi saat ini (session_state), hilang saat tab ditutup
 """
 
 import streamlit as st
 
 from utils import auth, database as db
+from datetime import datetime
 from utils.theme import apply_theme
 from utils.components import render_sidebar, render_topbar
 
@@ -65,9 +66,14 @@ else:
             if len(title) > 80:
                 title = title[:80] + "..."
 
-            with st.expander(
-                f"{title} ({item['created_at'][:16].replace('T', ' ')})"
-            ):
+            created_at = item["created_at"]
+            
+            if isinstance(created_at, datetime):
+                created_at = created_at.strftime("%Y-%m-%d %H:%M")
+            else:
+                created_at = created_at[:16].replace("T", " ")
+
+            with st.expander(f"{title} ({created_at})"):
 
                 st.markdown("#### Pertanyaan")
                 st.write(item["question"])

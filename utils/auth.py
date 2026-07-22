@@ -1,10 +1,12 @@
 """
 auth.py
 =======
-Modul autentikasi sederhana berbasis SQLite + bcrypt.
-Login bersifat OPSIONAL — pengguna tetap bisa memakai Chatbot,
-Analisis Putusan, dan Statistik tanpa login. Login hanya dibutuhkan
-untuk menyimpan & melihat riwayat permanen serta mengubah profil.
+Modul autentikasi sederhana berbasis PostgreSQL (Supabase) + bcrypt.
+
+Login bersifat opsional. Pengguna tetap dapat menggunakan fitur
+Chatbot, Analisis Putusan, dan Statistik tanpa login. Login hanya
+diperlukan untuk menyimpan riwayat percakapan secara permanen,
+melihat riwayat, serta mengelola profil pengguna.
 """
 
 import re
