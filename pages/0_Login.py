@@ -20,9 +20,7 @@ apply_theme()
 st.markdown("""
 <style>
 .block-container{
-    max-width:1100px;
-    margin:auto;
-    padding-top:2rem;
+    max-width:100% !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -45,7 +43,7 @@ if st.session_state.logged_in:
 
 st.markdown("<div style='height: 40px'></div>", unsafe_allow_html=True)
 
-col_left, col_right = st.columns([1, 1.15], gap="small")
+col_left, col_right = st.columns([1.3, 1], gap="large")
 
 with col_left:
     logo_justice = get_image_base64("logo.png")
