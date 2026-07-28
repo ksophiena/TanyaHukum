@@ -17,16 +17,15 @@ db.init_db()
 auth.init_session_state()
 apply_theme()
 
-st.markdown(
-    """
-    <style>
-    .block-container {
-        max-width: 100% !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
+st.markdown("""
+<style>
+.block-container{
+    max-width:1100px;
+    margin:auto;
+    padding-top:2rem;
+}
+</style>
+""", unsafe_allow_html=True)
 
 st.markdown(
     """
