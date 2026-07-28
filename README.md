@@ -1,53 +1,131 @@
-# TanyaHukum — Chatbot Yurisprudensi Pencurian
+# TanyaHukum: Chatbot Yurisprudensi Pencurian Berbasis Retrieval-Augmented Generation (RAG)
 
-Chatbot RAG (Retrieval-Augmented Generation) untuk yurisprudensi kasus
-pidana pencurian di Indonesia, dibangun dengan IndoBERT (NER + embedding),
-FAISS (retrieval), dan Google Gemini Flash 2.5 (generasi jawaban).
+TanyaHukum merupakan aplikasi chatbot berbasis web yang dirancang untuk membantu pengguna memperoleh informasi mengenai yurisprudensi tindak pidana pencurian di Indonesia melalui pertanyaan dalam bahasa alami. Sistem menerapkan pendekatan **Retrieval-Augmented Generation (RAG)** yang mengombinasikan proses pencarian dokumen secara semantik dengan Large Language Model (LLM) untuk menghasilkan jawaban yang kontekstual berdasarkan putusan pengadilan.
 
-## Setup lokal
+Aplikasi memanfaatkan model **IndoBERT** untuk proses *Named Entity Recognition (NER)*, **FAISS** untuk pencarian dokumen berdasarkan kemiripan semantik, **Google Gemini Flash 2.5** sebagai model pembangkit jawaban, serta **Supabase** sebagai basis data untuk autentikasi pengguna dan penyimpanan riwayat percakapan.
+
+---
+
+## Fitur
+
+- Chatbot tanya jawab yurisprudensi tindak pidana pencurian
+- Retrieval-Augmented Generation (RAG)
+- Named Entity Recognition (NER) menggunakan IndoBERT
+- Pencarian dokumen berbasis kemiripan semantik menggunakan FAISS
+- Analisis putusan pengadilan
+- Visualisasi statistik dataset
+- Autentikasi pengguna
+- Penyimpanan riwayat percakapan menggunakan Supabase
+
+---
+
+## Teknologi yang Digunakan
+
+| Komponen | Teknologi |
+|----------|-----------|
+| Frontend | Streamlit |
+| Backend | Python |
+| Basis Data | Supabase (PostgreSQL) |
+| Model NER | IndoBERT |
+| Vector Retrieval | FAISS |
+| Large Language Model | Google Gemini Flash 2.5 |
+
+---
+
+## Instalasi
+
+Instal seluruh dependensi yang diperlukan.
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Buat file `.streamlit/secrets.toml` (tidak ikut di-commit ke git):
-```toml
-GEMINI_API_KEY = "isi-api-key-kamu-di-sini"
+Buat file berikut:
+
+```text
+.streamlit/secrets.toml
 ```
 
-Jalankan:
+Contoh konfigurasi:
+
+```toml
+GEMINI_API_KEY = "your-gemini-api-key"
+
+SUPABASE_URL = "your-supabase-url"
+SUPABASE_KEY = "your-supabase-anon-key"
+```
+
+Jalankan aplikasi menggunakan perintah berikut.
+
 ```bash
 streamlit run app.py
 ```
 
-## Deployment ke Streamlit Community Cloud
+---
 
-1. Push folder ini ke GitHub repo.
-2. Di Streamlit Community Cloud, buat app baru, arahkan ke `app.py`.
-3. Di menu **Settings → Secrets**, tambahkan `GEMINI_API_KEY = "..."`.
-4. Deploy.
+## Deployment
 
-## Sumber daya eksternal (di-load otomatis, tidak perlu di-commit)
+Aplikasi dapat dideploy menggunakan **Streamlit Community Cloud**.
 
-- Model NER: `ksophiena/ner-indobert-pencurian` (Hugging Face Model Hub)
-- Knowledge Base + Embeddings + FAISS Index: `ksophiena/kb-yurisprudensi-pencurian` (Hugging Face Dataset Hub)
+1. Push repository ke GitHub.
+2. Buat aplikasi baru pada Streamlit Community Cloud.
+3. Tentukan `app.py` sebagai entry point.
+4. Tambahkan secrets berikut:
+   - `GEMINI_API_KEY`
+   - `SUPABASE_URL`
+   - `SUPABASE_KEY`
+5. Deploy aplikasi.
 
-## Struktur folder
+---
 
+## Sumber Daya Eksternal
+
+Untuk menjaga ukuran repository tetap ringan, beberapa komponen tidak disimpan langsung pada repository GitHub dan akan diunduh secara otomatis saat aplikasi dijalankan.
+
+### Hugging Face Model Hub
+
+**Model Named Entity Recognition (NER)**
+
+- `ksophiena/ner-indobert-pencurian`
+
+### Hugging Face Dataset Hub
+
+**Knowledge Base, Embedding, dan FAISS Index**
+
+- `ksophiena/kb-yurisprudensi-pencurian`
+
+---
+
+## Struktur Proyek
+
+```text
+.
+├── app.py                          # Halaman utama aplikasi
+├── pages/
+│   ├── 0_Login.py                  # Login dan registrasi pengguna
+│   ├── 2_Analisis_Putusan.py       # Analisis putusan
+│   ├── 3_Statistik.py              # Statistik dataset
+│   ├── 4_Riwayat.py                # Riwayat percakapan
+│   └── 5_Profil.py                 # Profil pengguna
+├── utils/
+│   ├── auth.py                     # Autentikasi pengguna
+│   ├── components.py               # Komponen antarmuka
+│   ├── database.py                 # Koneksi dan operasi Supabase
+│   ├── rag_engine.py               # Pipeline Retrieval-Augmented Generation
+│   └── theme.py                    # Tema aplikasi
+├── assets/                         # Aset gambar dan ikon
+├── requirements.txt
+└── README.md
 ```
-app.py                      # entry point + halaman Chatbot
-pages/
-  0_Login.py                # login/signup (opsional, tidak wajib untuk pakai chatbot)
-  2_Analisis_Putusan.py
-  3_Statistik.py
-  4_Riwayat.py
-  5_Profil.py
-utils/
-  rag_engine.py             # semua fungsi RAG (retrieval, context builder, prompt, Gemini call)
-  auth.py                   # login/signup/hash password
-  database.py                # skema & fungsi SQLite
-  theme.py                   # CSS tema merah
-  components.py               # sidebar & topbar reusable
-data/
-  tanyahukum.db               # dibuat otomatis saat app pertama kali start
-```
+
+---
+
+## Catatan
+
+Repository ini hanya memuat kode sumber aplikasi. Model NER, knowledge base, embedding, dan indeks FAISS disimpan pada Hugging Face sehingga aplikasi dapat dijalankan tanpa perlu menyimpan file berukuran besar di repository.
+
+---
+
+## Lisensi
+
+Proyek ini dikembangkan untuk keperluan pendidikan dan penelitian.
