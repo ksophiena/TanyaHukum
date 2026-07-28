@@ -229,7 +229,7 @@ def render_metric(label, value, caption):
 {label}
 </div>
 
-<div style="font-family:'IBM Plex Mono', monospace; font-size:1.8rem; font-weight:600; color:#BEB5A9; line-height:1.2; margin-bottom:6px; max-width:180px; white-space:normal; word-break:break-word;">
+<div style="font-family:'IBM Plex Mono', monospace; font-size:1.8rem; font-weight:600; color:#BEB5A9; line-height:1.2; margin-bottom:4px; max-width:180px; white-space:normal; word-break:break-word;">
 {value}
 </div>
 
