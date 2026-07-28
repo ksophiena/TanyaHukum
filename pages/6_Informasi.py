@@ -81,8 +81,8 @@ with st.container(border=True):
         "bukan sebagai pengganti konsultasi maupun pendapat hukum profesional."
     )
 
-st.markdown("### Rujukan Hukum")
 with st.container(border=True):
+    st.markdown("### Rujukan Hukum")
     st.markdown(
         "Informasi hukum yang disajikan dalam aplikasi mengacu pada putusan pengadilan "
         "yang menjadi sumber data pada basis pengetahuan. Seluruh putusan tersebut "
