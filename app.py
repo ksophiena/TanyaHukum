@@ -10,7 +10,7 @@ import streamlit as st
 
 from utils import auth, database as db
 from utils.theme import apply_theme
-from utils.components import render_sidebar, render_topbar, law_disclaimer, render_chat_bubble
+from utils.components import render_sidebar, render_topbar, render_footer, law_disclaimer, render_chat_bubble
 from utils import rag_engine as rag
 
 st.set_page_config(page_title="TanyaHukum - Chatbot", page_icon="⚖️", layout="wide", initial_sidebar_state="collapsed")
@@ -46,7 +46,7 @@ st.markdown(
 )
 
 render_sidebar(active="Chatbot")
-render_topbar("Chatbot", "Selamat datang! Silahkan pilih salah satu contoh pertanyaan atau ketik pertanyaan Anda seputar kasus pencurian")
+render_topbar("Chatbot", "Selamat datang! Silahkan pilih salah satu contoh pertanyaan atau ketik pertanyaan Anda")
 
 # Inisialisasi resource RAG 
 tokenizer, model, ner_pipeline, kb, embeddings, index = rag.load_resources()
@@ -147,3 +147,5 @@ if question:
         )
 
     st.rerun()
+
+render_footer()
