@@ -13,7 +13,7 @@ from streamlit_folium import st_folium
 
 from utils import auth, database as db
 from utils.theme import apply_theme, render_metric
-from utils.components import render_sidebar, render_topbar, law_disclaimer
+from utils.components import render_sidebar, render_topbar, render_footer, law_disclaimer
 from utils.chart_helpers import render_bar_chart, render_pie_chart
 from utils import rag_engine as rag
 
@@ -380,3 +380,4 @@ st.info(
     "Statistik dihitung secara langsung berdasarkan keseluruhan dokumen pada knowledge base."
 )
 law_disclaimer()
+render_footer()
