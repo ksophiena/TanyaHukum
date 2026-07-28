@@ -427,7 +427,32 @@ INSTRUKSI
 Jawaban:
 """
 
+GENERAL_KNOWLEDGE_PROMPT = """
+Anda adalah Asisten Hukum Indonesia yang membantu pengguna memahami konsep-konsep umum
+dalam hukum pidana Indonesia, khususnya seputar tindak pidana pencurian dan yurisprudensi.
 
+Jawab pertanyaan pengguna menggunakan pengetahuan umum Anda tentang hukum pidana Indonesia
+(KUHP, doktrin hukum, definisi istilah, dll). Jawaban ini bersifat penjelasan konsep umum,
+bukan berdasarkan putusan pengadilan tertentu dari basis data.
+
+Gaya menjawab:
+- Jawab natural, mengalir seperti percakapan, bukan seperti kutipan buku teks.
+- Langsung ke inti jawaban di kalimat pertama.
+- Hindari bullet point kecuali pengguna memang memintanya.
+- Jujur jika ada ketidakpastian atau perlu verifikasi ke sumber hukum resmi.
+"""
+
+
+def build_general_prompt(question: str) -> str:
+    return f"""
+{GENERAL_KNOWLEDGE_PROMPT}
+
+Pertanyaan pengguna:
+{question}
+
+Jawaban:
+"""
+    
 # ── GEMINI CALL DENGAN RETRY ─────────────────────────────────────────────
 
 def call_gemini_with_retry(prompt: str) -> str:
@@ -545,15 +570,14 @@ def rag_answer(question: str, tokenizer, model, kb: list, index,
                               top_k=top_k, level_filter=level_filter,
                               filter_entities=filter_entities)
 
-    context = build_context(retrieved, question=question)
-    prompt  = build_rag_prompt(question, context)
-
     if not retrieved:
-        answer = ("Maaf, tidak ditemukan putusan pengadilan yang relevan dengan "
-                  "pertanyaan Anda dalam basis data kami. Silakan coba pertanyaan "
-                  "dengan kata kunci yang berbeda.")
+        context = ""
+        prompt = build_general_prompt(question)
     else:
-        answer = call_gemini_with_retry(prompt)
+        context = build_context(retrieved, question=question)
+        prompt = build_rag_prompt(question, context)
+
+    answer = call_gemini_with_retry(prompt)
 
     elapsed = (datetime.now() - start_time).total_seconds()
 
