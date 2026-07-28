@@ -46,7 +46,7 @@ if st.session_state.logged_in:
 
 st.markdown("<div style='height: 40px'></div>", unsafe_allow_html=True)
 
-col_left, col_right = st.columns([1, 1.15], gap="large")
+col_left, col_right = st.columns([1, 1.15], gap="small")
 
 with col_left:
     logo_justice = get_image_base64("logo.png")
