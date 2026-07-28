@@ -118,10 +118,12 @@ st.markdown(
     "Hasil ini hanya sebagai referensi dan bukan pengganti konsultasi hukum.</p>",
     unsafe_allow_html=True,
 )
-law_disclaimer()
 
 user_input = st.chat_input("Ketik pertanyaan tentang yurisprudensi kasus pencurian...")
 question = clicked_example or user_input
+
+law_disclaimer()
+render_footer()
 
 if question:
     st.session_state.chat_messages.append({"role": "user", "content": question, "sources": None})
@@ -147,5 +149,3 @@ if question:
         )
 
     st.rerun()
-
-render_footer()
