@@ -43,7 +43,7 @@ if st.session_state.logged_in:
 
 st.markdown("<div style='height: 40px'></div>", unsafe_allow_html=True)
 
-col_left, col_right = st.columns([1.3, 1], gap="large")
+col_left, col_right = st.columns([1, 1.15], gap="large")
 
 with col_left:
     logo_justice = get_image_base64("logo.png")
@@ -62,7 +62,7 @@ with col_left:
             @import url('https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Inter:wght@400;500&family=IBM+Plex+Mono&display=swap');
             html, body {{ margin:0; padding:0; background:#1A1613; }}
         </style>
-        <div style="background:linear-gradient(160deg,#4A382D 0%,#181513 100%);height:520px;
+        <div style="background:linear-gradient(160deg,#4A382D 0%,#181513 100%);height:540px;
             border-radius:16px;padding:40px;display:flex;flex-direction:column;color:#F3E7D3;
             box-sizing:border-box;font-family:'Inter',sans-serif;border-left:4px solid #C4956A;">
 
