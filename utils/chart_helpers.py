@@ -32,7 +32,7 @@ def render_bar_chart(data: list, color: str, height: int = 260):
         xaxis=dict(showgrid=False, showticklabels=False),
         yaxis=dict(showgrid=False),
     )
-    st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
+    st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False, "scrollZoom":False, "staticPlot":True})
 
 
 def render_pie_chart(data: list, palette: list, height: int = 340, hole: float = 0.45):
@@ -47,12 +47,12 @@ def render_pie_chart(data: list, palette: list, height: int = 340, hole: float =
         labels=labels, values=values, hole=hole,
         marker=dict(colors=palette[:len(labels)], line=dict(color="#1A1613", width=2)),
         textfont=dict(color=FONT_COLOR, size=12),
-        textinfo="percent",              # slice cuma nampilin persen, label lengkap di legend
+        textinfo="percent",              
         textposition="inside",
         insidetextorientation="radial",
     ))
     fig.update_layout(
-        height=height, margin=dict(l=10, r=10, t=10, b=90),   # ruang bawah dilebarin buat legend
+        height=height, margin=dict(l=10, r=10, t=10, b=90),   
         plot_bgcolor=PLOT_BG, paper_bgcolor=PLOT_BG,
         font=dict(color=FONT_COLOR, family="Inter, sans-serif", size=13),
         legend=dict(
@@ -60,6 +60,6 @@ def render_pie_chart(data: list, palette: list, height: int = 340, hole: float =
             xanchor="center", x=0.5,
             font=dict(size=11),
         ),
-        uniformtext=dict(minsize=9, mode="hide"),   # sembunyiin teks yang kepaksa numpuk, bukan dipaksa muat
+        uniformtext=dict(minsize=9, mode="hide"),   
     )
     st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
