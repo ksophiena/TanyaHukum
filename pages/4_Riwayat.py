@@ -10,7 +10,7 @@ import streamlit as st
 from utils import auth, database as db
 from datetime import datetime
 from utils.theme import apply_theme
-from utils.components import render_sidebar, render_topbar
+from utils.components import render_sidebar, render_topbar, render_footer
 
 st.set_page_config(page_title="TanyaHukum - Riwayat", layout="wide", initial_sidebar_state="collapsed")
 st.markdown("<style>[data-testid='stSidebarNav'] {display: none;}</style>", unsafe_allow_html=True)
@@ -85,3 +85,5 @@ else:
                     db.delete_chat(item["id"], user["id"])
                     st.success("Riwayat berhasil dihapus.")
                     st.rerun()
+
+render_footer()
