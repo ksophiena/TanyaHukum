@@ -9,7 +9,7 @@ import streamlit as st
 
 from utils import auth, database as db
 from utils.theme import apply_theme
-from utils.components import render_sidebar, render_topbar, law_disclaimer
+from utils.components import render_sidebar, render_topbar, render_footer, law_disclaimer
 
 st.set_page_config(page_title="TanyaHukum - Informasi", layout="wide", initial_sidebar_state="collapsed")
 st.markdown("<style>[data-testid='stSidebarNav'] {display: none;}</style>", unsafe_allow_html=True)
@@ -103,7 +103,4 @@ with st.container(border=True):
         "mengikuti metodologi CRISP-DM."
     )
 
-st.divider()
-st.caption(
-    "© 2026 TanyaHukum | Dikembangkan oleh Kamila Sophie sebagai bagian dari penelitian skripsi."
-)
+render_footer()
