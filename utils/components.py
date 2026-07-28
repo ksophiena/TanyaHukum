@@ -102,8 +102,5 @@ def render_chat_bubble(role: str, content: str):
 
 def law_disclaimer():
     st.caption(
-        "⚠️ Sistem ini menggunakan basis pengetahuan yang bersumber dari putusan "
-        "pengadilan historis. Referensi pasal yang ditampilkan masih mengikuti ketentuan "
-        "hukum yang berlaku pada saat putusan tersebut diterbitkan dan belum mengacu "
-        "pada KUHP Nasional (UU Nomor 1 Tahun 2023). "
-    )
+    "⚠️ Referensi pasal mengacu pada ketentuan hukum yang berlaku saat putusan diterbitkan "
+    "dan belum mengacu pada KUHP Nasional (UU Nomor 1 Tahun 2023).")
