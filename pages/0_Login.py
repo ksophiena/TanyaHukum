@@ -92,7 +92,7 @@ with col_left:
             </div>
 
         </div>
-    """, height=520)
+    """, height=540)
 
 with col_right:
     tab_login, tab_signup = st.tabs(["Masuk", "Daftar"])
