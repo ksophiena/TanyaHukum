@@ -15,7 +15,7 @@ from pypdf import PdfReader
 
 from utils import auth, database as db
 from utils.theme import apply_theme
-from utils.components import render_sidebar, render_topbar, law_disclaimer
+from utils.components import render_sidebar, render_topbar, render_footer, law_disclaimer
 from utils import rag_engine as rag
 from utils.validator import validate_court_decision
 
@@ -168,3 +168,4 @@ elif not raw_text:
     st.caption(".txt atau .pdf — maks. 5.000 karakter")
 
 law_disclaimer()
+render_footer()
