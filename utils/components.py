@@ -64,6 +64,7 @@ def render_topbar(title: str, subtitle: str):
     st.divider()
 
 def render_footer():
+    st.divider()
     st.caption("© 2026 TanyaHukum | Kamila Sophie")
     
 def render_chat_bubble(role: str, content: str):
