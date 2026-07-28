@@ -63,6 +63,9 @@ def render_topbar(title: str, subtitle: str):
                 st.switch_page("pages/0_Login.py")
     st.divider()
 
+def render_footer():
+    st.caption("© 2026 TanyaHukum | Kamila Sophie")
+    
 def render_chat_bubble(role: str, content: str):
     is_user = role == "user"
     avatar_b64 = get_image_base64("user.png" if is_user else "assistant.png")
