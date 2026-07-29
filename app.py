@@ -119,11 +119,11 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-user_input = st.chat_input("Ketik pertanyaan tentang yurisprudensi kasus pencurian...")
-question = clicked_example or user_input
-
 law_disclaimer()
 render_footer()
+
+user_input = st.chat_input("Ketik pertanyaan tentang yurisprudensi kasus pencurian...")
+question = clicked_example or user_input
 
 if question:
     st.session_state.chat_messages.append({"role": "user", "content": question, "sources": None})
