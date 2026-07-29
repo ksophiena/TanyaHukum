@@ -223,19 +223,44 @@ def render_bar(label: str, count: int, max_count: int, color: str):
 
 def render_metric(label, value, caption):
     html = f"""
-<div style="width:100%; min-height:135px; padding:8px 4px; display:flex; flex-direction:column; justify-content:space-between;">
+<div style="
+    width:100%;
+    min-height:135px;
+    padding:8px 4px;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+">
 
-<div style="font-family:'Inter', sans-serif; font-size:16px; font-weight:500; color:var(--text-secondary); margin-bottom:8px;">
-{label}
-</div>
+    <div style="
+        font-family:'Inter', sans-serif;
+        font-size:16px;
+        font-weight:500;
+        color:var(--text-secondary);
+    ">
+        {label}
+    </div>
 
-<div style="font-family:'IBM Plex Mono', monospace; font-size:1.8rem; font-weight:600; color:#BEB5A9; line-height:1.2; margin-bottom:4px; max-width:180px; white-space:normal; word-break:break-word;">
-{value}
-</div>
+    <div style="
+        font-family:'IBM Plex Mono', monospace;
+        font-size:1.8rem;
+        font-weight:600;
+        color:#BEB5A9;
+        line-height:1.2;
+        max-width:180px;
+        white-space:normal;
+        word-break:break-word;
+    ">
+        {value}
+    </div>
 
-<div style="font-family:'Inter', sans-serif; font-size:15px; color:var(--text-secondary); margin-top:auto;">
-{caption}
-</div>
+    <div style="
+        font-family:'Inter', sans-serif;
+        font-size:15px;
+        color:var(--text-secondary);
+    ">
+        {caption}
+    </div>
 
 </div>
 """
