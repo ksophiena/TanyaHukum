@@ -53,7 +53,7 @@ with st.container(border=True):
         "Setelah berhasil masuk ke dalam aplikasi, pengguna dapat memilih fitur yang "
         "ingin digunakan melalui menu navigasi. Fitur Chatbot digunakan untuk mengajukan "
         "pertanyaan mengenai putusan perkara pencurian, sedangkan fitur Analisis Putusan "
-        "digunakan untuk menganalisis dokumen putusan dalam format PDF. Selain itu, "
+        "digunakan untuk menganalisis dokumen putusan dalam format PDF atau txt. Selain itu, "
         "pengguna juga dapat melihat statistik data putusan, riwayat penggunaan, serta "
         "mengelola informasi akun melalui halaman yang tersedia."
     )
@@ -71,11 +71,10 @@ with st.container(border=True):
 with st.container(border=True):
     st.markdown("### Keterbatasan Sistem")
     st.markdown(
-        "Aplikasi ini dirancang khusus untuk menganalisis putusan perkara pencurian yang "
-        "tersedia pada basis pengetahuan. Oleh karena itu, jawaban yang diberikan "
-        "bergantung pada informasi yang terdapat dalam dokumen tersebut dan mungkin "
-        "belum mencakup kasus di luar ruang lingkup data yang tersedia. Selain itu, "
-        "hasil analisis dokumen dapat dipengaruhi oleh kualitas berkas PDF yang diunggah, "
+        "Aplikasi ini dirancang khusus untuk menganalisis putusan perkara pencurian yang tersedia "
+        "pada basis pengetahuan. Jawaban yang diberikan bergantung pada informasi pada dokumen tersebut "
+        "dan mungkin belum mencakup kasus di luar ruang lingkup data yang tersedia. "
+        "Hasil analisis dokumen dapat dipengaruhi oleh kualitas berkas PDF yang diunggah, "
         "terutama apabila dokumen merupakan hasil pemindaian dengan kualitas yang kurang baik. "
         "Informasi yang disajikan bertujuan sebagai media pembelajaran dan pencarian informasi, "
         "bukan sebagai pengganti konsultasi maupun pendapat hukum profesional."
@@ -99,7 +98,7 @@ with st.container(border=True):
         "dan penyimpanan data dikelola menggunakan Supabase, ekstraksi informasi dari "
         "dokumen dilakukan menggunakan model Named Entity Recognition (NER) berbasis "
         "IndoBERT, pencarian dokumen memanfaatkan FAISS, sedangkan penyusunan jawaban "
-        "chatbot didukung oleh model Gemini Flash. Seluruh proses pengembangan sistem "
+        "chatbot didukung oleh model Gemini Flash 2.5. Seluruh proses pengembangan sistem "
         "mengikuti metodologi CRISP-DM."
     )
 
