@@ -445,7 +445,7 @@ def call_gemini_with_retry(prompt: str) -> str:
             )
             answer = getattr(response, "text", "").strip()
             if not answer:
-                return "Maaf, model tidak menghasilkan jawaban. Silahkan coba gunakan pertanyaan lain."
+                return "Maaf, saya belum dapat memberikan jawaban untuk pertanyaan tersebut. Silahkan coba gunakan pertanyaan lain."
             return answer
 
         except Exception as e:
@@ -457,9 +457,9 @@ def call_gemini_with_retry(prompt: str) -> str:
                 time.sleep(wait_time)
                 continue
             elif is_rate_limit:
-                return "Layanan Gemini sedang mencapai batas kuota. Silahkan coba beberapa saat lagi."
+                return "Layanan sedang sibuk. Silahkan coba kembali beberapa saat lagi."
             else:
-                return "Terjadi kesalahan saat menghubungi layanan Gemini. Silahkan coba beberapa saat lagi."
+                return "Maaf, terjadi kendala saat memproses pertanyaan Anda. Silahkan coba kembali beberapa saat lagi."
 
 
 # KLASIFIKASI TIPE PERTANYAAN 
@@ -550,9 +550,8 @@ def rag_answer(question: str, tokenizer, model, kb: list, index,
 
     # ── Generasi dengan Gemini ────────────────────────────────────────────────
     if not retrieved:
-        answer = ('Maaf, tidak ditemukan putusan pengadilan yang relevan dengan '
-                  'pertanyaan Anda dalam basis data kami. Silakan coba pertanyaan '
-                  'dengan kata kunci yang berbeda.')
+        answer = ('Maaf, saya belum menemukan putusan pengadilan yang sesuai dengan pertanyaan Anda. '
+                   'Silakan gunakan kata kunci yang lebih spesifik atau ajukan pertanyaan lain. ')
     else:
         answer = call_gemini_with_retry(prompt)
 
