@@ -82,7 +82,7 @@ if not st.session_state.chat_messages:
     clicked_example = None
     for i, eq in enumerate(example_questions):
         with cols[i % 2]:
-            if st.button(eq, key=f"example_{i}", use_container_width=True, type="primary"):
+            if st.button(eq, key=f"example_{i}", use_container_width=True):
                 clicked_example = eq.replace("💬 ", "")
 else:
     clicked_example = None
