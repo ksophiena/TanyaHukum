@@ -19,18 +19,18 @@ THEME_CSS = """
     @import url('https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
         :root {
-            --bg-main:        #181513;
-            --bg-sidebar:     #2B211C;
-            --bg-card:        #3A2D25;
-            --bg-card-hover:  #44342B;
-            --accent-main:    #C4956A;
-            --accent-hover:   #B9875D;
-            --button-bg:      #7A5C3E;
-            --button-hover:   #8A6948;
-            --accent-danger:  #A34D4D;
-            --text-main:      #F3E7D3;
-            --text-secondary: #C9B59E;
-            --border-color:   #6B5444;
+        --bg-main:        #2A2118;
+        --bg-sidebar:     #3D2F22;
+        --bg-card:        #4A3928;
+        --bg-card-hover:  #55422F;
+        --accent-main:    #C4956A;
+        --accent-hover:   #B9875D;
+        --button-bg:      #8A6948;
+        --button-hover:   #9A7856;
+        --accent-danger:  #B85C5C;
+        --text-main:      #FFF8ED;
+        --text-secondary: #D9C3AC;
+        --border-color:   #7A6250;
     }
 
     #MainMenu { visibility: hidden; }
