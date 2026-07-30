@@ -25,8 +25,8 @@ THEME_CSS = """
         --bg-card-hover:  #52463B;
         --accent-main:    #D4A574;
         --accent-hover:   #E0B584;
-        --button-bg:      #A67C4F;
-        --button-hover:   #BC8E5E;
+        --button-bg:      #F0E6D2;
+        --button-hover:   #E8D9BC;
         --accent-danger:  #C2635F;
         --text-main:      #F5EDE1;
         --text-secondary: #C4B3A0;
@@ -122,11 +122,11 @@ THEME_CSS = """
 
     .stButton > button {
         background-color: var(--button-bg);
-        color: var(--text-main);
+        color: #211D1A;
         border: 1px solid var(--button-bg);
         border-radius: 8px;
         font-family: 'Inter', sans-serif;
-        font-weight: 500;
+        font-weight: 600;
         padding: 0.8rem 1rem;
         transition: all 0.15s ease;
     }
@@ -134,7 +134,9 @@ THEME_CSS = """
         background-color: var(--button-hover);
         border-color: var(--button-hover);
         transform: translateY(-1.5px);
-        box-shadow: 0 6px 10px rgba(61, 43, 26, 0.25);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+    
     }
     .stButton > button[kind="secondary"] {
         background-color: transparent;
