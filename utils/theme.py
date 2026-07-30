@@ -19,18 +19,18 @@ THEME_CSS = """
     @import url('https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
         :root {
-        --bg-main:        #211D1A;
-        --bg-sidebar:     #322A24;
-        --bg-card:        #443A31;
-        --bg-card-hover:  #52463B;
-        --accent-main:    #D4A574;
-        --accent-hover:   #E0B584;
-        --button-bg:      #A67C4F;
-        --button-hover:   #BC8E5E;
-        --accent-danger:  #C2635F;
-        --text-main:      #F5EDE1;
-        --text-secondary: #C4B3A0;
-        --border-color:   #5C4E42;
+            --bg-main:        #181513;
+            --bg-sidebar:     #2B211C;
+            --bg-card:        #3A2D25;
+            --bg-card-hover:  #44342B;
+            --accent-main:    #C4956A;
+            --accent-hover:   #B9875D;
+            --button-bg:      #7A5C3E;
+            --button-hover:   #8A6948;
+            --accent-danger:  #A34D4D;
+            --text-main:      #F3E7D3;
+            --text-secondary: #C9B59E;
+            --border-color:   #6B5444;
     }
 
     #MainMenu { visibility: hidden; }
@@ -136,8 +136,6 @@ THEME_CSS = """
         transform: translateY(-1.5px);
         box-shadow: 0 6px 10px rgba(61, 43, 26, 0.25);
     }
-    
-    }
     .stButton > button[kind="secondary"] {
         background-color: transparent;
         border: 1px solid var(--border-color);
@@ -225,20 +223,21 @@ def render_bar(label: str, count: int, max_count: int, color: str):
 
 def render_metric(label, value, caption):
     html = f"""
-<div style="width:100%; min-height:135px; padding:8px 4px; display:flex; flex-direction:column; gap:6px;">
+<div style="width:100%; min-height:135px; padding:8px 4px; display:flex; flex-direction:column; justify-content:space-between;">
 
 <div style="font-family:'Inter', sans-serif; font-size:16px; font-weight:500; color:var(--text-secondary); margin-bottom:8px;">
 {label}
 </div>
 
-<div style="font-family:'IBM Plex Mono', monospace; font-size:1.8rem; font-weight:600; color:#BEB5A9; line-height:1.2; margin-bottom:4px; max-width:180px; white-space:normal; word-break:break-word;">
+<div style="font-family:'IBM Plex Mono', monospace; font-size:1.8rem; font-weight:600; color:#BEB5A9; line-height:1.2; margin-bottom:6px; max-width:180px; white-space:normal; word-break:break-word;">
 {value}
 </div>
 
-<div style="font-family:'Inter', sans-serif; font-size:15px; color:var(--text-secondary); margin-top:4px;">
+<div style="font-family:'Inter', sans-serif; font-size:15px; color:var(--text-secondary); margin-top:auto;">
 {caption}
 </div>
 
 </div>
 """
     st.markdown(html, unsafe_allow_html=True)
+
